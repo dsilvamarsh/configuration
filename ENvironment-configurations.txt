@@ -1,0 +1,160 @@
+
+https://us-east-2.console.aws.amazon.com/apigateway/main/apis?region=us-east-2
+
+https://hub.docker.com/settings/default-privacy
+
+https://github.com/gabhasti-dev/com-gabhasti-service-echo
+
+gabhasti.harish.scf
+
+
+GMAIL EMAIL : gabhasti.harish.scf@gmail.com
+Password: Welcome@01
+###################GIT######################################
+
+GIT:
+USERNAME: gabhasti-dev
+Email : gabhasti.harish.scf@gmail.com
+Password : Welcome@01gabhasti-dev
+
+
+https://github.com/gabhasti-dev
+
+
+############################################### DOCKER##########################################
+
+https://hub.docker.com/
+
+Download and install docker
+
+Try this it shall install both docker and kubernetics for you
+https://docs.docker.com/docker-for-windows/
+
+below links are for reference 
+https://learnk8s.io/blog/installing-docker-and-kubernetes-on-windows
+or 
+https://docs.docker.com/docker-for-windows/install/
+or
+https://medium.com/jsonlovesyaml/12-step-tutorial-to-setup-kubernetes-on-your-windows-10-laptop-b7784b2253ce
+
+DOCKER HUB
+Username: gabhastiharishscf
+Password : Welcome@01
+EMail : gabhasti.harish.scf@gmail.com (edited) 
+
+Below steps to be perfomed in commandline.(NOTE : first fetch the project in local Spring Tool Suit usign github plugin in Spring Tool Suit.)
+
+build your porject 
+
+maven clean compile package 
+
+cd to the root directory of the project where the Dockerfile is present and execute the below commands.
+
+step 1 :  docker login --username gabhastiharishscf
+Propmpt password : Welcome@01
+
+Build the image
+docker build -t gabhastiharishscf/com-gabhasti-product-ux:1.0.0 .
+push the image
+ docker push gabhastiharishscf/com-gabhasti-product-ux:1.0.0
+
+
+Build the image
+docker build -t gabhastiharishscf/com-gabhasti-product-security:1.0.0 .
+push the image
+ docker push gabhastiharishscf/com-gabhasti-product-security:1.0.0
+
+
+#####################KUBERNETIVS#################
+https://learnk8s.io/blog/installing-docker-and-kubernetes-on-windows
+
+minikube start
+
+>> configure kubernetics to pull images from your repository
+
+kubectl create secret docker-registry gabhastiharishscf --docker-username=gabhastiharishscf --docker-password=Welcome@01 --docker-email=gabhasti.harish.scf@gmail.com -n dev
+###################################################
+
+
+Initail setup post the installation..
+kubectl apply -f cluster-namespace.yaml
+kubectl config set-context --current --namespace=dev
+
+
+
+
+CD to the location of you project which holds the below yaml file ideally in the base directory of the git hub project.
+kubectl apply -f com-gabhasti-product-currency.yaml
+
+
+###############################ISTIO#################
+curl -L https://istio.io/downloadIstio | sh -
+set the environment variable 
+ istioctl manifest apply --set profile=demo
+ kubectl label namespace dev istio-injection=enabled
+
+
+###############################Postgres####################################
+Steps 
+su - postgres
+
+
+
+#########NFS
+Use the below u
+https://vitux.com/install-nfs-server-and-client-on-ubuntu/
+
+
+
+kubectl apply -f postgres-config.yaml
+
+
+psql -h $(minikube ip) -U devgabhasti --password gabhasti -p30432
+
+psql -h $(minikube ip) -U dev --password dev -p30432
+
+
+
+
+
+ com-gabhasti-service-echo
+ 
+ -- kubernetics
+ kubectl expose deployment service-currency --type="NodePort" --port 80
+docker rmi -f $(docker images -f "dangling=true" -q)
+
+Steps to start working
+
+minikube start
+kubectl apply -f cluster-namespace.yaml
+kubectl config set-context --current --namespace=dev
+kubectl config view --minify 
+<service-name>.<namespace-name>.svc.cluster.local
+<service-name>.dev.svc.cluster.local
+
+below steps to be followed to allow postgres to start connecting to external clients
+https://blog.bigbinary.com/2016/01/23/configure-postgresql-to-allow-remote-connection.html
+
+command to enter inside a pod
+
+kubectl exec -it postgresql-7647966d48-vfktv -- /bin/bash
+kubectl scale deployment --replicas=0 postgresql
+kubectl scale deployment --replicas=1 postgresql
+connecting to the plsql 
+
+psql -h localhost -p 5432  -U dev --password
+psql -h localhost -U dev --password  -p 5432
+psql -h 192.168.39.133 -U postgres-db-sit --password  -p 30543 postgres-gabhasti
+psql -h 192.168.39.133 -U postgres-db-sit -P postgres-db-sit  -p 30543 postgres-gabhasti
+psql -h 10.108.61.173 -U dev -P dev  -p 30543 
+
+kubectl exec -it postgres-7ff9df5765-2mpsl --  psql -h 192.168.39.133 -U postgres-db-sit -P postgres-db-sit  -p 30543 postgres-gabhasti
+psql -h localhost -U postgressit --password gabhasti
+
+
+kubectl patch pvc db-pv-claim -p '{"metadata":{"finalizers":null}}'
+
+https://vitux.com/install-nfs-server-and-client-on-ubuntu/
+https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/
+
+

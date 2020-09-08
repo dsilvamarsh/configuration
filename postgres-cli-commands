@@ -1,0 +1,35 @@
+install postgres
+# after setup of postgres login as root user and modify the password
+sudo -u postgres psql
+alter user postgres PASSWORD 'postgres';
+		  Minikube ip
+ psql -h 192.168.39.185 -U postgres -p 30432 --password
+psql -h localhost -U postgres --password
+psql -h $(minikube ip) -U postgres --password
+enter password >> postgres
+
+#create user command
+CREATE USER dev WITH PASSWORD 'dev';
+#create database
+CREATE DATABASE dev OWNER dev TABLESPACE dev-tablespace;
+CREATE DATABASE dev OWNER dev ;
+#login as the new user
+psql -h localhost -U dev --password dev
+
+#Grant privilages to the user else he wont be able to do naything..
+
+ psql -h 192.168.39.185 -U dev -p 30432 --password
+
+# follow below steps
+GRANT ALL PRIVILEGES ON DATABASE "postgres" to postgres;
+#create user command
+CREATE USER dev WITH PASSWORD 'dev';
+#create database
+CREATE DATABASE dev OWNER dev TABLESPACE dev-tablespace;
+CREATE DATABASE dev OWNER dev ;
+GRANT ALL PRIVILEGES ON DATABASE "dev" to dev;
+
+
+
+
+https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/

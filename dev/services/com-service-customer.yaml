@@ -1,0 +1,44 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+   name: com-service-customer
+spec:
+   selector:
+      matchLabels:
+         app: com-service-customer # a lable to match with other services(Objects eg: Service)
+   replicas: 2 # tells deployment to run 2 pods matching the template
+   template:
+      metadata:
+         labels:
+            app: com-service-customer
+      spec:
+         containers:
+         -  name: com-service-customer
+            image: dsilvamarsh/com-service-customer:1.0.0
+            env: 
+            - name: JAVA_OPTS
+              value: "-Xmx200m -Xms150m" 
+            resources:
+               limits:
+                  memory: 210Mi
+               requests:
+                  cpu: 100m
+                  memory: 200Mi
+            imagePullPolicy: Always
+            ports:
+            -  containerPort: 80
+         imagePullSecrets:
+         -  name: dsilvamarsh
+---
+apiVersion: v1
+kind: Service
+metadata:
+   name: com-service-customer
+spec:
+   type: NodePort
+   selector:
+      app: com-service-customer
+   ports:
+   -  protocol: TCP
+      port: 80
+      name: http
