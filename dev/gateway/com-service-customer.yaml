@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: com-service-customer
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - com-training-gateway.dev.svc.cluster.local
+  http:
+  - match:
+     - uri:
+        prefix: /api/customer
+    route:
+    - destination:
+        host: com-service-customer.dev.svc.cluster.local
+        port:
+          number: 8081
+ 
