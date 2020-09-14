@@ -72,7 +72,7 @@ minikube start
 
 >> configure kubernetics to pull images from your repository
 
-kubectl create secret docker-registry gabhastiharishscf --docker-username=gabhastiharishscf --docker-password=Welcome@01 --docker-email=gabhasti.harish.scf@gmail.com -n dev
+kubectl create secret docker-registry dsilvamarsh --docker-username=dsilvamarsh --docker-password=M@rsh@strid1 --docker-email=dsilvamarsh@gmail.com -n dev
 ###################################################
 
 
@@ -157,4 +157,5 @@ kubectl patch pvc db-pv-claim -p '{"metadata":{"finalizers":null}}'
 https://vitux.com/install-nfs-server-and-client-on-ubuntu/
 https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/
 
+docker run -p 80:8081 -e "JAVA_OPTS=-Xmx150m" dsilvamarsh/com-service-customer:1.0.0 
 
