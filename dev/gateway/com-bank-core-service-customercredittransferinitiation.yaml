@@ -4,7 +4,7 @@ metadata:
   name: com-bank-core-service-customercredittransferinitiation
 spec:
   hosts:
-  - "*"
+  - "xyz.bank.com"
   gateways:
   - com-bank-gateway.dev.svc.cluster.local
   http:

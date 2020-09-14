@@ -4,7 +4,7 @@ metadata:
   name: com-service-customer
 spec:
   hosts:
-  - "*"
+  - "xyz.bank.com"
   gateways:
   - com-bank-gateway.dev.svc.cluster.local
   http:
